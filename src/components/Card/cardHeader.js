@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import styles from '../../assets/components/cardHeaderStyle';
+import styles from 'assets/components/cardHeaderStyle';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 

@@ -60,6 +60,14 @@ const dangerCardHeader = {
 };
 
 
+const container = {
+
+}
+
+const primaryColor = {
+
+}
+
 export {
     warningBoxShadow,
     warningCardHeader,
@@ -70,6 +78,8 @@ export {
     dangerBoxShadow,
     dangerCardHeader,
     infoCardHeader,
-    infoBoxShadow
+    infoBoxShadow,
+    container,
+    primaryColor
 
 };

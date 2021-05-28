@@ -3,12 +3,12 @@ import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 
 // import cartão
-import Card from '../../components/Card/card'
+import Card from 'components/Card/card'
 
 import styles from 'assets/views/teamStyle';
-import CardBody from '../../components/Card/cardBody';
-import CardFooter from '../../components/Card/cardFooter';
-import CardHeader from '../../components/Card/cardHeader';
+import CardBody from 'components/Card/cardBody';
+import CardFooter from 'components/Card/cardFooter';
+import CardHeader from 'components/Card/cardHeader';
 
 const useStyles = makeStyles(styles);
 
