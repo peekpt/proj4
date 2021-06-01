@@ -12,8 +12,10 @@ import Drawer from '@material-ui/core/Drawer';
 
 // importar menus
 
-import Menus from '@material-ui/icons/Menu';
+import Menu from '@material-ui/icons/Menu';
 import styles from 'assets/components/headerStyle';
+// import { primaryColor } from 'assets/components/global';
+
 
 const useStyles = makeStyles(styles);
 
@@ -31,6 +33,11 @@ export default function Header(props) {
             }
         }
     });
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
     const headerColorChange = () => {
         const { color, changeColorOnScroll } = props;
 
@@ -57,11 +64,73 @@ export default function Header(props) {
         <div>
             <AppBar className={appBarClasses}>
                 <ToolBar className={classes.container}>
-                    ss
+                    {leftLinks !== undefined ? brandComponent : null}
+                    <div className={classes.flex}>
+                        {leftLinks !== undefined ? (
+                            <Hidden smDown implementation="css">
+                                {leftLinks}
+                            </Hidden>
+                        ) : (brandComponent)
+                        }
+                    </div>
+                    <Hidden smDown implementation="css">
+                        {rightLinks}
+                    </Hidden>
+                    <Hidden mdUp>
+                        <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>
+                            <Menu />
+                        </IconButton>
+                    </Hidden>
                 </ToolBar>
+                <Hidden mdUp implementation="js">
+                    <Drawer variant="temporary" anchor={"right"} open={mobileOpen} classes={{ paper: classes.drawerPaper }} onClose={handleDrawerToggle}>
+                        <div className={classes.appResponsive} >
+                            {leftLinks}
+                            {rightLinks}
+                        </div>
+                    </Drawer>
+                </Hidden>
             </AppBar>
         </div>
     );
+};
 
+Header.defaultProp = {
+    color: "white",
 
+};
+
+Header.propTypes = {
+    color: PropTypes.oneOf([
+        "primary",
+        "info",
+        "success",
+        "warning",
+        "danger",
+        "transparent",
+        "white",
+        "rose",
+        "dark"
+    ]),
+    rightLinks: PropTypes.node,
+    leftLinks: PropTypes.node,
+    brand: PropTypes.bool,
+    fixed: PropTypes.bool,
+    absolute: PropTypes.bool,
+    changeColorOnScroll: PropTypes.shape(
+        {
+            height: PropTypes.number.isRequired,
+            color: PropTypes.oneOf([
+                "primary",
+                "info",
+                "success",
+                "warning",
+                "danger",
+                "transparent",
+                "white",
+                "rose",
+                "dark"
+            ])
+        }
+    ).isRequired
 }
